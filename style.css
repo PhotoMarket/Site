@@ -7,8 +7,12 @@ html, body {
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-direction: column;
    height: 100vh;
 }
+
+.app h1 { margin: 0; }
+.app h4 { text-transform: uppercase; }
 
 
 
