@@ -6,19 +6,20 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <title>PhotoMarket</title>
-   <meta property="og:title" content="PhotoMarket">
+   <title>Imago: Photographers Of Georgia</title>
+   <meta property="og:title" content="Imago">
    <meta property="og:locale" content="en_US">
-   <meta name="description" content="PhotoMarket">
-   <meta property="og:description" content="PhotoMarket">
-   <!-- <link rel="canonical" href="https://PhotoMarket.com"> -->
-   <!-- <meta property="og:url" content="https://PhotoMarket.com"> -->
-   <meta property="og:site_name" content="PhotoMarket">
+   <meta name="description" content="Imago - Photographers Of Georgia">
+   <meta property="og:description" content="Imago - Photographers Of Georgia">
+   <link rel="canonical" href="https://imago.ltd">
+   <meta property="og:url" content="https://imago.ltd">
+   <meta property="og:site_name" content="IMAGO">
    <meta property="og:type" content="website">
    <meta name="twitter:card" content="summary">
-   <meta property="twitter:title" content="PhotoMarket">
-   <!-- <script type="application/ld+json">
-   {"@context":"https://schema.org","@type":"WebSite","description":"PhotoMarket","headline":"PhotoMarket","name":"PhotoMarket","url":"http://PhotoMarket.com"}</script> -->
+   <meta property="twitter:title" content="Imago">
+   <script type="application/ld+json">
+   {"@context":"https://schema.org","@type":"WebSite","description":"Image - Photographers Of Georgia",
+   "headline":"Imago","name":"Imago","url":"http://imago.ltd"}</script>
 
    <link rel="stylesheet" href="style.css">
    <script defer src='app.js'></script>
@@ -34,9 +35,22 @@
    <div class="app">
 
       <h1 id="site">IMAGO</h1>
-      <h4>Photographers of Georgia</h4>
+      <h4>Photographers Of Georgia</h4>
+
+      <!-- <hr/> -->
+
+      <form onsubmit="submitForm(event)" method="post">
+         <textarea id="textid" required name="text" placeholder="Feel free to leave any message for us..." rows="5"
+            cols="40" autofocus maxlength="1000" minlength="5"></textarea>
+         <br />
+         <input type="submit" value="Send" id="btnid" />
+         <br />
+         <br />
+      </form>
+      <p id="resp"></p>
 
    </div>
+   <div id="log" />
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"
       integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>

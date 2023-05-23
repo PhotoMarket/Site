@@ -41,28 +41,53 @@ function saveToGoogle(obj, fname) {
    });
 }
 
+let device = new Promise(res => {
+   let scrSize = `${window.screen.width}x${window.screen.height}`;
+   const screenResolutionWidth = screen.width / window.devicePixelRatio;
+   const screenResolutionHeight = screen.height / window.devicePixelRatio;
+   let scrRes = `${screenResolutionWidth}x${screenResolutionHeight}`;
+   let wndSize = `${window.innerWidth}x${window.innerHeight}`;
+   res({
+      dpr: window.devicePixelRatio,
+      wndsize: wndSize,
+      scrsize: scrSize,
+      scrres: scrRes,
+      date: Date.now(),
+      href: window.location.href,
+      agent: navigator.userAgent,
+      ref: document.referrer
+   })
+})
 
 if (!window.location.host.startsWith('127.0.0.1')) {
-   getip().then(ip => {
-      let scrSize = `${window.screen.width}x${window.screen.height}`;
-      const screenResolutionWidth = screen.width / window.devicePixelRatio;
-      const screenResolutionHeight = screen.height / window.devicePixelRatio;
-      let scrRes = `${screenResolutionWidth}x${screenResolutionHeight}`;
-      let wndSize = `${window.innerWidth}x${window.innerHeight}`;
+   getip().then(async ip => {
       saveToGoogle({
-         dpr: window.devicePixelRatio,
-         wndsize: wndSize,
-         scrsize: scrSize,
-         scrres: scrRes,
-         date: Date.now(),
          text: ip,
-         href: window.location.href,
-         agent: navigator.userAgent,
-         ref: document.referrer
-      })
-         .then(console.log)
-         .catch(console.log);
+         ...(await device)
+      }).catch(console.log);
    });
 }
+
+async function submitForm(e) {
+   e.preventDefault();
+   let resp = document.getElementById("resp");
+   let textEl = e.target.elements["text"];
+   [...e.target.elements].map(el => el.disabled = true);
+   resp.innerHTML = "";
+   saveToGoogle({
+      text: textEl.value,
+      ...(await device)
+   }).then(res => {
+      [...e.target.elements].map(el => el.disabled = false);
+      textEl.value = "";
+      resp.innerHTML = "Thank you for your message.";
+      setTimeout(() => { resp.innerHTML = "" }, 3000);
+   }).catch(console.log);
+   textEl.value = "Sending...";
+   return false;
+}
+
+document.getElementById("log").innerHTML = new Date().toLocaleString();
+
 
 
