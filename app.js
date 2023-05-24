@@ -87,7 +87,7 @@ async function submitForm(e) {
    return false;
 }
 
-document.getElementById("log").innerHTML = new Date().toLocaleString();
+// document.getElementById("log").innerHTML = new Date().toLocaleString();
 
 
 

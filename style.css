@@ -1,20 +1,7 @@
-html, body {
+* {
    padding: 0;
    margin: 0;
 }
-
-.app {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   height: 100vh;
-   width: 100%;
-   
-}
-
-.app h1 { margin: 0; }
-.app h4 { text-transform: uppercase; }
 
 #log {
    position: absolute;
@@ -24,17 +11,13 @@ html, body {
    color: silver;
 }
 
-
-hr { color: red; width: 90vw; }
-
-
 .app textarea {
    border-radius: 4px;
    resize: none;
 }
 
 .app input[type="submit"] {
-   width: 10em;
-   margin: 0 auto;
+   /* width: 10em; */
+   /* margin: 0 auto; */
 }
 
